@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/ManageMate.DAL/bin/Debug/net8.0
+/ManageMate.DAL/obj
+/ManageMate.Service/bin/Debug/net8.0
+/.vs
+/ManageMate.Service/obj
