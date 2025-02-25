@@ -7,3 +7,6 @@
 /ManageMate.Service/bin/Debug/net8.0
 /.vs
 /ManageMate.Service/obj
+/ManageMate.Test/bin
+/ManageMate.Test/obj/Debug/net8.0
+/ManageMate.Test/obj
