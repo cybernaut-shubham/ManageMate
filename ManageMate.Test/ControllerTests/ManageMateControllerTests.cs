@@ -254,5 +254,37 @@ namespace ManageMate.Test.ControllerTests
             Assert.AreEqual(StatusCodes.Status404NotFound, ((NotFoundObjectResult)response).StatusCode);
             Assert.AreEqual(expectedResult, ((NotFoundObjectResult)response).Value!.ToString());
         }
+
+        [TestMethod]
+        public void DeleteProductById_ReturnsOk_WhenProductIsDeleted()
+        {
+            // Arrange
+            _mockProductOperations.Setup(x => x.DeleteProductById(It.IsAny<int>())).ReturnsAsync(MockData.GetProductByIdMock());
+
+            // Act
+            var response = _manageMateController.DeleteProductById(123456).Result;
+
+            // Assert
+            Assert.IsNotNull(response);
+            Assert.IsInstanceOfType(response, typeof(OkObjectResult));
+            Assert.AreEqual(StatusCodes.Status200OK, ((OkObjectResult)response).StatusCode);
+        }
+
+        [TestMethod]
+        public void DeleteProductById_ReturnsNotFound_WhenProductDoesNotExist()
+        {
+            // Arrange
+            _mockProductOperations.Setup(x => x.DeleteProductById(It.IsAny<int>())).ReturnsAsync((Product)null!);
+            var expectedResult = "Product not found.";
+
+            // Act
+            var response = _manageMateController.DeleteProductById(123456).Result;
+
+            // Assert
+            Assert.IsNotNull(response);
+            Assert.IsInstanceOfType(response, typeof(NotFoundObjectResult));
+            Assert.AreEqual(StatusCodes.Status404NotFound, ((NotFoundObjectResult)response).StatusCode);
+            Assert.AreEqual(expectedResult, ((NotFoundObjectResult)response).Value!.ToString());
+        }
     }
 }
