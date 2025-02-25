@@ -40,5 +40,10 @@ namespace ManageMate.Service.Operations
         {
             return await _productRepository.UpdateProductById(id, product);
         }
+
+        public async Task<Product> DeleteProductById(int id)
+        {
+            return await _productRepository.DeleteProductById(id);
+        }
     }
 }

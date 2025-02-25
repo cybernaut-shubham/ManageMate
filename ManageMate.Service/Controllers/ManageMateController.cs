@@ -53,6 +53,18 @@ namespace ManageMate.Service.Controllers
             return Ok(productResponse);
         }
 
+        [HttpDelete("Products/{id}")]
+        [RouteParameterValidation("id")]
+        public async Task<IActionResult> DeleteProductById(int id)
+        {
+            var productResponse = await _productOperations.DeleteProductById(id);
+            if (productResponse == null)
+            {
+                return NotFound("Product not found.");
+            }
+            return Ok(productResponse);
+        }
+
         [HttpPut("Products/{id}")]
         [RouteParameterValidation("id")]
         public async Task<IActionResult> UpdateProductById(int id, [FromBody] Product product)

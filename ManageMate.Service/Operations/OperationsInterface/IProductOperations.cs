@@ -10,5 +10,6 @@ namespace ManageMate.Service.Operations.OperationsInterface
         public Task<Product> UpdateProductById(int id, Product product);
         public Task<Product> DecrementStock(int id, int quantity);
         public Task<Product> IncrementStock(int id, int quantity);
+        public Task<Product> DeleteProductById(int id);
     }
 }
